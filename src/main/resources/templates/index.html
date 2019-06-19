@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Vue.js test</title>
+</head>
+<body>
+
+<!-- id="app"としてbodyの下にdivタグを作成 -->
+<div id="app">
+    <!-- testValの内容を表示 -->
+    {{ testVal }}
+</div>
+
+<p th:text="${msg}">ここの文字列は、実行時に${msg}で置換されます。</p>
+</body>
+
+<!-- <script>タグを追加しvueインスタンスを作成する -->
+<script>
+    const app = new Vue({
+    	el: '#app',
+    
+    	data: {
+    		testVal: 'Hello world! Vue.js!!'
+    	}
+    });
+</script>
+
+</html>

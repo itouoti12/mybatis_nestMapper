@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.DemoMapperXml">
+    
+    
+    <resultMap id="countryMap" type="com.example.demo.entity.Country" >
+        <result column="country_id" property="countryId" />
+        <result column="country" property="country" />
+        <result column="last_update" property="lastUpdate" />
+    
+        <collection property="city" ofType="com.example.demo.entity.City">
+            <result column="city_id" property="cityId" />
+            <result column="city" property="city" />
+            <result column="last_update" property="lastUpdate" />
+            
+            <collection property="address" ofType="com.example.demo.entity.Address">
+                <result column="address_id" property="addressId" />
+                <result column="address" property="address" />
+                <result column="address2" property="address2" />
+                <result column="district" property="district" />
+                <result column="postal_code" property="postalCode" />
+                <result column="phone" property="phone" />
+                <result column="last_update" property="lastUpdate" />
+            
+            </collection>
+             
+        </collection>
+    
+    </resultMap>
+    <select
+        id="selctCountry"
+        resultMap="countryMap">
+        SELECT *
+        FROM
+            country,
+            city,
+            address
+        WHERE
+            country.country_id = #{id}
+        AND
+            country.country_id = city.country_id
+        AND
+            city.city_id = address.city_id
+    </select>
+</mapper>
