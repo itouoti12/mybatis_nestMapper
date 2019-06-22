@@ -8,7 +8,6 @@ import com.example.demo.entity.Country;
 @Mapper
 public interface DemoMapperXml {
 
-    Country selectCountry(@Param("id")Integer id);
-    
-    
+    Country selectCountry(@Param("id") Integer id);
+
 }

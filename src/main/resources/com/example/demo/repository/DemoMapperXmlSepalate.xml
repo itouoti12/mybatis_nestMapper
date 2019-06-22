@@ -70,8 +70,4 @@
         WHERE
             city_id = #{id}
     </select>
-    
-    
-    
-    
 </mapper>
