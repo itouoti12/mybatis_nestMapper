@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Country {
 
-    private int countryId;
+    private CountryId id;
 
     private String country;
 

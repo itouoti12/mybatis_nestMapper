@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.DemoMapperXmlSepalate">
+    
+    <resultMap id="countryMap" type="com.example.demo.entity.Country" >
+    
+        <result column="country" property="country" />
+        <result column="last_update" property="lastUpdate" />
+        <association property="id" column="country_id" select="selectCountryId" />
+        <collection property="city" column="country_id" select="selectCity" />
+    
+    </resultMap>
+    <select
+        id="selectCountry"
+        resultMap="countryMap">
+        SELECT *
+        FROM
+            country
+        WHERE
+            country_id = #{id}
+    </select>
+    
+    <resultMap id="countryIdMap" type="com.example.demo.entity.CountryId" >
+        <result column="country_id" property="countryId" />
+    </resultMap>
+    <select
+        id="selectCountryId"
+        resultMap="countryIdMap">
+        SELECT *
+        FROM
+            country
+        WHERE
+            country_id = #{id}
+    </select>
+    
+    
+    <resultMap id="cityMap" type="com.example.demo.entity.City" >
+        <result column="city_id" property="cityId" />
+        <result column="city" property="city" />
+        <result column="last_update" property="lastUpdate" />
+        <collection property="address" column="city_id" select="selectAdress" />
+    </resultMap>
+    <select
+        id="selectCity"
+        resultMap="cityMap">
+        SELECT *
+        FROM
+            city
+        WHERE
+            country_id = #{id}
+    </select>
+    
+    <resultMap id="addressMap" type="com.example.demo.entity.Address" >
+    <result column="address_id" property="addressId" />
+        <result column="address" property="address" />
+        <result column="address2" property="address2" />
+        <result column="district" property="district" />
+        <result column="postal_code" property="postalCode" />
+        <result column="phone" property="phone" />
+        <result column="last_update" property="lastUpdate" />
+    </resultMap>
+    <select
+        id="selectAdress"
+        resultMap="addressMap">
+        SELECT *
+        FROM
+            address
+        WHERE
+            city_id = #{id}
+    </select>
+    
+    
+    
+    
+</mapper>

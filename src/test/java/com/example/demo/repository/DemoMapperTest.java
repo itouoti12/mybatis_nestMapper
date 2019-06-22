@@ -17,21 +17,11 @@ public class DemoMapperTest {
     @Autowired
     DemoMapper target;
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
-    @AfterEach
-    void tearDown() {
-
-    }
-
     @Test
     void wiringCountryTest() {
 
         // action
-        Country act = target.selctCountry(87);
+        Country act = target.selectCountry(87);
 
         // assert
         assertThat(act).isNotNull();
