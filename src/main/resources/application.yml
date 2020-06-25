@@ -13,3 +13,7 @@ logging:
       example:
         demo:
           repository: DEBUG
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

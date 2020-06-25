@@ -40,7 +40,6 @@ public class SideEffectTest {
                 .lastUpdate(Timestamp.valueOf(LocalDateTime.of(2019, 9, 9, 12, 12)))
                 .build();
 
-        int expectedAddressId = 1110;
         when(addressMapper.create(any())).then(firstArgumentsSideEffect());
 
         //WHEN
@@ -58,7 +57,6 @@ public class SideEffectTest {
 
         //GIVEN
         Address address = Address.builder()
-                .addressId(1110)
                 .address("Tokyo")
                 .district("")
                 .city(City.builder().cityId(90).build())
